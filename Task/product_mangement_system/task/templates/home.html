@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <centr>
+      <h1>Product Management System</h1>
+
+      <form method="POST">
+        {% csrf_token %} 
+        {{ form.as_p }}
+
+        <button type="submit">Add product</button>
+      </form>
+
+      <table border="1">
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Action</th>
+        </tr>
+
+        {% for i in pdb %}
+
+        <tr>
+          <td>{{ i.name }}</td>
+          <td>{{ i.price }}</td>
+          <td>{{ i.category }}</td>
+          <td>{{ i.quantity }}</td>
+
+          <td>
+            <a href="{% url 'update' i.name %}">Update</a>
+
+            <a href="{% url 'delete' i.name %}"> Delete </a>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </table>
+    </centr>
+  </body>
+</html>
