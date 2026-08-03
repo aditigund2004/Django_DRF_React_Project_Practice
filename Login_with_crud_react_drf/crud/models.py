@@ -2,6 +2,9 @@ from django.db import models
 
 # Create your models here.
 class Model(models.Model):
+    email = models.CharField(max_length=100)
+    password =  models.CharField(max_length=100)
+    
     username = models.CharField(max_length=100)
     total_amount = models.IntegerField()
     upi_id = models.IntegerField()
@@ -12,4 +15,3 @@ class Model(models.Model):
     
     class Meta:
         db_table = 'bank'
-    

@@ -1,9 +1,11 @@
 
+
 from rest_framework import serializers
-from .models import Model
+from . models import FDA
+
 
 class Seri(serializers.ModelSerializer):
     class Meta:
-        model = Model
+        model = FDA
         fields = '__all__'
         

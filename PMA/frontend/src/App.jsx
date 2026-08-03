@@ -9,6 +9,7 @@ const App = () => {
 
   const [serach, setSearch] = useState("")
 
+  // category -> radio button veg non veg
 
   const loadData = async () =>{
 
@@ -45,8 +46,6 @@ const App = () => {
       })
 
     }else{
-
-    
     await api.post(`/`, data)
     .then( (res)=>{
       loadData()
