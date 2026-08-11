@@ -1,8 +1,15 @@
 {
-    "foodorders" : [
-        {
-            "name" : "raj" , 
-            "quantity": 2 
-        }
-    ]
+  "foodorders": [
+    {
+      "name": "raj",
+      "quantity": 2,
+      "id": "0N5pXJfvdiM"
+    },
+    {
+      "name": "as",
+      "quantity": "as",
+      "id": "pzVlvwp99xg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
