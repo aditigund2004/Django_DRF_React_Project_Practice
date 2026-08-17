@@ -25,22 +25,10 @@ const App = () => {
     loadData();
   }, [])
 
-  // const handleDelete = async(id)=>{
-  //   await api.delete(`/${id}/`)
-  //   .then( (res) =>{
-  //     loadData();
-  //     setFood(res.data)
-  //   })
-  //   .catch( (err) =>{
-  //     console.log(err)
-  //   })
-  // }
-
   const handleInput = (e)=>{
     const {name, value} = e.target 
     setData({...data, [name]: value})
   }
-
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
@@ -137,10 +125,6 @@ const App = () => {
                 <td>{u.price}</td>
                 <td>{u.paymentmode}</td>
 
-                {/* <td>
-                  <button onClick={() => handleDelete(u.id)}>Delete</button>
-                </td> */}
-
                 <td>
                   <button onClick={() => handleUpdate(u)}>Update</button>
                 </td>
@@ -155,5 +139,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App

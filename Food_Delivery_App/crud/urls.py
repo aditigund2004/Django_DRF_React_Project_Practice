@@ -8,3 +8,4 @@ r.register('crud', View)
 urlpatterns = [
     path('', include(r.urls))
 ]
+
