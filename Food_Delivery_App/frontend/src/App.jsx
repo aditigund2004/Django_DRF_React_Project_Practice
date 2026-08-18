@@ -6,10 +6,11 @@ const App = () => {
   
   const [data, setData] = useState({customerName: '', quntity:'', status:'Preparing', foodistem: '', price:'', paymentmode: 'UPI'})
 
-  const [update, setUpdate] = useState([])
-
+  const [update, setUpdate] = useState(null)
 
   const [search, setSearch] = useState('')
+
+  const [searchValue, setSearchValue] = useState('')
 
   const loadData = async() =>{
     await api.get(`/`)
@@ -34,7 +35,7 @@ const App = () => {
     e.preventDefault()
 
     if(update){
-      await api.patch(`/${update.id}/`, data)
+      await api.put(`/${update.id}/`, data)
       .then((res)=>{
         setData(res.data)
         loadData()
@@ -42,9 +43,7 @@ const App = () => {
       .catch( (err) =>{
         console.log(err)
       })
-
     }else{
-
     await api.post(`/`, data)
     .then( (res) =>{
       setData(res.data)
@@ -60,10 +59,15 @@ const App = () => {
     setUpdate(dt)
   }
 
+  const handleSearch = () => {
+  setSearch(searchValue)
+}
+
 
   const searchData = food.filter((u) =>
-    String(u.customerName).includes(search) || 
-    String(u.customerName).includes(search)
+    // String(u.customerName).includes(search) || 
+    // String(u.customerName).includes(search)
+    String(u.customerName).toLowerCase() === search.toLowerCase()
   )
 
   return (
@@ -93,9 +97,9 @@ const App = () => {
         </form>
         <br /> <br />
 
-        Search : <input type="text"  value={search} onChange={(e)=> setSearch(e.target.value)}/>
+        Search : <input type="text"  value={searchValue} onChange={(e)=> setSearchValue(e.target.value)}/> <br></br><br></br>
 
-        <br></br><br></br>
+        <button type="button" onClick={handleSearch}> Search </button>
 
 
 
